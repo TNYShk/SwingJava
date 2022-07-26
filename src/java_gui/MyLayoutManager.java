@@ -20,10 +20,10 @@ import java.io.IOException;
 public class MyLayoutManager {
 
     public static void main(String[] args) throws IOException {
-        //borderLayout();
+        borderLayout();
         //gridLayout();
         //flowLayout();
-        JLayerPane();
+        //JLayerPane();
     }
 
     public static void JLayerPane(){
