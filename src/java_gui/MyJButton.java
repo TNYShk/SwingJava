@@ -26,13 +26,13 @@ public class MyJButton {
         this.button.setIcon(buttonImg);
         this.button.setHorizontalTextPosition(JButton.CENTER);
         this.button.setVerticalTextPosition(JButton.BOTTOM);
-        //this.button.setBorder(BorderFactory.createEtchedBorder());
+        //this.button.setBorder(BorderFactory.createEtchedBorder()); //looks a bit 3d
 
 
         //this.button.addActionListener(e -> System.out.println("Foo"));
 
         this.button.addActionListener(e -> {
-                System.out.println("Foo");
+                System.out.println("Foo"); // on each button click, CLI print
                 //button.setEnabled(false); //disable button after click!
             label.setVisible(true);
         });
@@ -47,7 +47,6 @@ public class MyJButton {
         MyJButton but = new MyJButton();
         frame.getContentPane().add(but.button);
         frame.getContentPane().add(but.label);
-
 
     }
 }
