@@ -105,13 +105,11 @@ public class MyLayoutManager {
 
         frame.setVisible(true);
     }
-
     public static void flowLayout(){
         /*
             FlowLayout - places components in a row, sized at their preferred size.
             If the horizontal space in the container is too small, the FlowLayout class uses the next available row.
          */
-
         MyFrame frameFlow = new MyFrame(500,500,"FlowLayout Lesson");
         frameFlow.setLayout(new FlowLayout());
         //frame.setLayout(new FlowLayout(FlowLayout.CENTER)); /*FlowLayout.LEADING, FlowLayout.TRAILING changes the components position in the flow */
