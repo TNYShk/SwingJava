@@ -6,7 +6,7 @@ including:
 * JFrame, JPanel, JLabel, JButton, JOptionPane
 * various LayoutManagers: Border, Grid, Flow, JLayeredPane
 * 
- ![Screen Shot 2022-07-26 at 9 27 34](https://user-images.githubusercontent.com/108977551/180972551-dccabdaf-1180-4886-b42c-3f378fcf4ad8.png)
+
 
  
 
