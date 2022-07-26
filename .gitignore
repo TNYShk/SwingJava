@@ -1,2 +1,11 @@
-# Project exclude paths
-/out/
+# Project exclude all
+*
+# but these:
+
+!.gitignore
+!*.md
+!*.java
+!*.form
+!*.png
+!*.jpeg
+!/**/
