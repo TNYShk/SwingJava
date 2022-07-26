@@ -12,9 +12,54 @@ import java.io.IOException;
 
     3 common managers:
     Border, Grid, Flow
+
+    JLayeredPane - Swing Container that provides 3rd dimension for component positioning
+    for example depth- Z index
  */
 
 public class MyLayoutManager {
+
+    public static void main(String[] args) throws IOException {
+        //borderLayout();
+        //gridLayout();
+        //flowLayout();
+        JLayerPane();
+    }
+
+    public static void JLayerPane(){
+
+        JLabel label1 = new JLabel();
+        label1.setOpaque(true);
+        label1.setBackground(Color.RED);
+        label1.setBounds(50,50,200,200);
+
+        JLabel label2 = new JLabel();
+        label2.setOpaque(true);
+        label2.setBackground(Color.GREEN);
+        label2.setBounds(100,100,200,200);
+
+        JLabel label3 = new JLabel();
+        label3.setOpaque(true);
+        label3.setBackground(Color.BLUE);
+        label3.setBounds(150,150,200,200);
+
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setBounds(0,0,500,500);
+
+        //specify to which layered layer add the component to, either number
+        layeredPane.add(label1, Integer.valueOf(0));
+        layeredPane.add(label2, new Integer(2));
+        // OR specify the desired layer by name:
+        //layeredPane.add(label2, JLayeredPane.MODAL_LAYER);
+        layeredPane.add(label3,Integer.valueOf(1));
+
+
+        MyFrame layerFrame = new MyFrame(500,500,"JLayeredPane Lesson");
+        layerFrame.add(layeredPane);
+        layerFrame.setLayout(null);
+
+    }
+
 
     public static void borderLayout() throws IOException {
         /*
@@ -138,9 +183,5 @@ public class MyLayoutManager {
         frameFlow.setVisible(true);
     }
 
-    public static void main(String[] args) throws IOException {
-        borderLayout();
-        gridLayout();
-        flowLayout();
-    }
+
 }
