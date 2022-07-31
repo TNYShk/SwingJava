@@ -199,7 +199,9 @@ public class GamePanel extends JPanel implements ActionListener {
                         pauseIt = true;
                         break;
                     }else if(pauseIt){
+
                         pauseIt = false;
+                        GamePanel.this.notifyAll();
                     }
 
             }
