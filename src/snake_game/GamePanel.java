@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements ActionListener {
         startOver = new JButton("Start Over");
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.black);
-        //setDefaultPathtoFile
+
         //exitIcon = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/054.png");
         Path currentRelativePath = Paths.get("");
         String path = currentRelativePath.toAbsolutePath().toString().concat("/src/054.png");
@@ -166,8 +166,6 @@ public class GamePanel extends JPanel implements ActionListener {
 
         @Override
         public void keyPressed(KeyEvent e){
-
-
             switch(e.getKeyCode()){
                 case KeyEvent.VK_LEFT:
                     if(direction != 'R'){
@@ -198,8 +196,7 @@ public class GamePanel extends JPanel implements ActionListener {
                         }
                         pauseIt = true;
                         break;
-                    }else if(pauseIt){
-
+                    }else {
                         pauseIt = false;
                         GamePanel.this.notifyAll();
                     }

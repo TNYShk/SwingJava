@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /*
     including:
@@ -25,8 +27,10 @@ public class MyVarFields implements ActionListener {
 
 
     public MyVarFields(){
-        ImageIcon icon = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/psyduck.png");
-        ImageIcon icon1 = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/jigglypuff.png");
+        Path currentRelativePath = Paths.get("");
+
+        ImageIcon icon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/psyduck.png"));
+        ImageIcon icon1 = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/jigglypuff.png"));
         frame = new MyFrame(420,420,"TextField lesson");
         frame.setLayout(new FlowLayout());
 
@@ -49,8 +53,8 @@ public class MyVarFields implements ActionListener {
 
       /*
       //setting icons instead of regular checkbox
-        ImageIcon veIcon = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/green.png"); // create an image or icon
-        ImageIcon xIcon = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/redx.png"); // create an image or icon
+        ImageIcon veIcon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/green.png")); // create an image or icon
+        ImageIcon xIcon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/redx.png")); // create an image or icon
         checkBox.setIcon(xIcon); //unchecked
         checkBox.setSelectedIcon(veIcon); //checked
         */

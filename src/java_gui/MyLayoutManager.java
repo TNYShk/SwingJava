@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /*
     Layout Manager - defines the natural layout for components within a container
@@ -46,9 +48,9 @@ public class MyLayoutManager {
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(0,0,500,500);
 
-        //specify to which layered layer add the component to, either number
+        //specify to which layer add the component to, either number
         layeredPane.add(label1, Integer.valueOf(0));
-        layeredPane.add(label2, new Integer(2));
+        layeredPane.add(label2, Integer.valueOf(2));
         // OR specify the desired layer by name:
         //layeredPane.add(label2, JLayeredPane.MODAL_LAYER);
         layeredPane.add(label3,Integer.valueOf(1));
@@ -66,9 +68,11 @@ public class MyLayoutManager {
          BorderLayout - a BorderLayout places components in five areas: NORTH, SOUTH, WEST, EAST, CENTER.
                      all extra space is placed in the center area
          */
+        Path currentRelativePath = Paths.get("");
+
         MyFrame frameBorder = new MyFrame(710,710,"BorderLayout Lesson");
         frameBorder.setLayout(new BorderLayout(10,10)); //hgap, vgap- sdd margins between panels
-        BufferedImage myPicture = ImageIO.read(new File("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/054.png"));
+        BufferedImage myPicture = ImageIO.read(new File(currentRelativePath.toAbsolutePath().toString().concat("/src/054.png")));
         JLabel picLabel = new JLabel(new ImageIcon(myPicture));
 
         JPanel panel1 = new JPanel();

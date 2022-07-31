@@ -1,6 +1,8 @@
 package java_gui;
 
 import javax.swing.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 public class MyJButton {
@@ -10,8 +12,10 @@ public class MyJButton {
 
 
     public MyJButton() {
-        ImageIcon buttonImg = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/classical_apple.png");
-        ImageIcon labelImg = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/psyduck.png");
+        Path currentRelativePath = Paths.get("");
+
+        ImageIcon buttonImg = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/classical_apple.png"));
+        ImageIcon labelImg = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/psyduck.png"));
         button = new JButton();
         label = new JLabel();
         label.setIcon(labelImg);

@@ -4,6 +4,8 @@ package java_gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 public class MyJPanel {
@@ -11,9 +13,8 @@ public class MyJPanel {
     //its default layout is Flow
 
     public static void main(String[] args){
-
-
-        ImageIcon icon = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/054.png");
+        Path currentRelativePath = Paths.get("");
+        ImageIcon icon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/054.png"));
 
         JLabel label = new JLabel();
         label.setText("Psyduck");

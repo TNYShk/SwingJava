@@ -1,29 +1,31 @@
 package java_gui;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
+
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class MyJLabel {
     //JLabel =  a GUI display are for a string of text, an image, or both
 
     public static void main(String[] args) throws IOException {
+        Path currentRelativePath = Paths.get("");
 
         JLabel label = new JLabel(); // create a label
-        ImageIcon image = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/imageJL.jpeg"); // create an image or icon
-        ImageIcon logo = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/fractal_logo.png"); // create an image or icon
+        ImageIcon image = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/imageJL.jpeg")); // create an image or icon
+        ImageIcon logo = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/fractal_logo.png")); // create an image or icon
 
         Border border = BorderFactory.createLineBorder(Color.WHITE,10); // create a border, set color and thickness
         /*
         //another way to import image
-        BufferedImage img = ImageIO.read(new File("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/fractal_logo.png"));
+        BufferedImage img = ImageIO.read(new File(currentRelativePath.toAbsolutePath().toString().concat("/src/fractal_logo.png")));
         ImageIcon another = new ImageIcon(img);*/
 
-        //label.setIcon(new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/imageJL.jpeg"));
+        //label.setIcon(new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/imageJL.jpeg")));
 
         label.setText("Learning about JLabel"); // set text of label
 
