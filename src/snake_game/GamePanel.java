@@ -34,7 +34,6 @@ public class GamePanel extends JPanel implements ActionListener {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.black);
 
-        //exitIcon = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/054.png");
         Path currentRelativePath = Paths.get("");
         String path = currentRelativePath.toAbsolutePath().toString().concat("/src/054.png");
         exitIcon = new ImageIcon(path);
