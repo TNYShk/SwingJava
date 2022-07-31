@@ -3,6 +3,8 @@ package snake_game;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Random;
 public class GamePanel extends JPanel implements ActionListener {
 
@@ -31,7 +33,12 @@ public class GamePanel extends JPanel implements ActionListener {
         startOver = new JButton("Start Over");
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.black);
-        exitIcon = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/054.png");
+        //setDefaultPathtoFile
+        //exitIcon = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/054.png");
+        Path currentRelativePath = Paths.get("");
+        String path = currentRelativePath.toAbsolutePath().toString().concat("/src/054.png");
+        exitIcon = new ImageIcon(path);
+        System.out.println(path);
         this.add(startOver);
         startOver.setVisible(false);
         this.setFocusable(true);
