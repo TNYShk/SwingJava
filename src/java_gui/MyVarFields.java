@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
  */
 public class MyVarFields implements ActionListener {
 
-    private MyFrame frame;
+    private final MyFrame frame;
     private JTextField  textField;
     private JLabel nameLabel;
     private JButton button;

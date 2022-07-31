@@ -1,20 +1,18 @@
 package java_gui;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class MyJButton {
     //JButton = a button that performs an action when clicked...
-    private JButton button = new JButton();
+    private JButton button;
     private JLabel label;
 
 
     public MyJButton() {
         ImageIcon buttonImg = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/classical_apple.png");
-        ImageIcon labelImg = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/psyduck.jpeg");
-
+        ImageIcon labelImg = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/psyduck.png");
+        button = new JButton();
         label = new JLabel();
         label.setIcon(labelImg);
         label.setBounds(200,150,150,150);
@@ -35,6 +33,7 @@ public class MyJButton {
                 System.out.println("Foo"); // on each button click, CLI print
                 //button.setEnabled(false); //disable button after click!
             label.setVisible(true);
+            button.setVisible(false);
         });
     }
 
@@ -47,6 +46,7 @@ public class MyJButton {
         MyJButton but = new MyJButton();
         frame.getContentPane().add(but.button);
         frame.getContentPane().add(but.label);
+        frame.setVisible(true);
 
     }
 }

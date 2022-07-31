@@ -1,6 +1,6 @@
 package java_gui;
 
-import jdk.nashorn.internal.scripts.JO;
+
 
 import javax.swing.*;
 
