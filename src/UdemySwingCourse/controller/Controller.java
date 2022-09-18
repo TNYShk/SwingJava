@@ -16,9 +16,16 @@ public class Controller {
         int ageCat = ev.getAgeCategory();
 
         String race = ev.getRace();
+        AgeCategory ag = AgeCategory.ADULT;
+        if(ageCat != ag.ordinal()){
+            ag = (ageCat == AgeCategory.CHILD.ordinal())? AgeCategory.CHILD: AgeCategory.OLD;
+        }
+        Race raceR = Race.valueOf(race);
 
 
-       // Person person = new Person(name, job, ageCat , race);
-        //db.addPerson(person);
+        System.out.println(ag+ " "+ raceR);
+
+       Person person = new Person(name, job, ag , raceR);
+        db.addPerson(person);
     }
 }
