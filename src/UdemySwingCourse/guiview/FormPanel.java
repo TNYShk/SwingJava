@@ -14,7 +14,8 @@ public class FormPanel extends JPanel implements TextEraser{
     private JList<String> ageList;
 
     private ButtonGroup group;
-    private JRadioButton[] races = {new JRadioButton("Droid"), new JRadioButton("Elf"), new JRadioButton("Dwarf"), new JRadioButton("Human")};
+    private JRadioButton[] races = {new JRadioButton("Droid"),new JRadioButton("Elf"),new JRadioButton("Dwarf"),new JRadioButton("Human")};
+
 
 
     public enum ageCat {
@@ -56,7 +57,13 @@ public class FormPanel extends JPanel implements TextEraser{
         ageList.setBorder(BorderFactory.createEtchedBorder());
         ageList.setSelectedIndex(1);
 
+        races[0].setActionCommand("Droid");
+        races[1].setActionCommand("Elf");
+        races[2].setActionCommand("Dwarf");
+        races[3].setActionCommand("Human");
+
         group = new ButtonGroup();
+
         for(JRadioButton jb: races){
             group.add(jb);
         }
@@ -71,9 +78,11 @@ public class FormPanel extends JPanel implements TextEraser{
             String name = nameField.getText();
             String job  = anotherField.getText();
             int ageCat = ageList.getSelectedIndex();
-            System.out.println(ageList.getModel().getElementAt(ageCat)+" "+ ageCat);
+            System.out.println(ageList.getModel().getElementAt(ageCat));
 
-            FormEvent ev = new FormEvent(this,name,job,ageCat);
+            String race = group.getSelection().getActionCommand();
+            System.out.println(race);
+            FormEvent ev = new FormEvent(this,name,job,ageCat,race);
 
 
             if(formListener != null){
@@ -165,8 +174,9 @@ public class FormPanel extends JPanel implements TextEraser{
         gc.weightx = 1;
         gc.weighty = 2;
 
-
+        gc.gridy++;
         gc.gridx = 1;
+
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
         add(confirmButton,gc);
 

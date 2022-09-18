@@ -6,6 +6,7 @@ public class FormEvent extends EventObject {
     private String name;
     private String occupation;
     private int ageCategory;
+    private String race;
     /**
      * Constructs a prototypical Event.
      *
@@ -15,11 +16,12 @@ public class FormEvent extends EventObject {
     public FormEvent(Object source) {
         super(source);
     }
-    public FormEvent(Object source,String name, String occupation, int ageCat) {
+    public FormEvent(Object source,String name, String occupation, int ageCat,String race) {
         super(source);
         this.name = name;
         this.occupation = occupation;
         this.ageCategory = ageCat;
+        this.race = race;
     }
 
     public String getName() {
@@ -39,5 +41,8 @@ public class FormEvent extends EventObject {
     }
     public int getAgeCategory(){
         return ageCategory;
+    }
+    public String getRace(){
+        return race;
     }
 }
