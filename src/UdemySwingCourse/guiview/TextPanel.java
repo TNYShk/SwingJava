@@ -1,4 +1,4 @@
-package UdemySwingCourse;
+package UdemySwingCourse.guiview;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,5 +21,10 @@ public class TextPanel extends JPanel {
         //textArea.setText(null);
         textArea.selectAll();
         textArea.replaceSelection("");
+
     }
+
+
+
+
 }

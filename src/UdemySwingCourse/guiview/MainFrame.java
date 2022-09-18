@@ -1,8 +1,9 @@
-package UdemySwingCourse;
+package UdemySwingCourse.guiview;
 
 import javax.swing.*;
 import java.awt.*;
 
+//Controller class(MVC)
 public class MainFrame extends JFrame {
     private TextPanel textPanel;
     private Toolbar toolbar;
@@ -25,6 +26,16 @@ public class MainFrame extends JFrame {
         });
 
         toolbar.setTextEraser(() -> textPanel.cleanText());
+
+        formPanel.setFormListener(new FormListener(){
+            public void formEventOccured(FormEvent e){
+                String name = e.getName();
+                String job = e.getOccupation();
+                int age = e.getAgeCategory();
+
+                textPanel.appendText(name+": "+ job + " -> "+ age+ "\n");
+            }
+        });
 
         add(toolbar,BorderLayout.NORTH);
         add(formPanel,BorderLayout.WEST);

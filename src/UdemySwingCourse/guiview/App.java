@@ -1,4 +1,4 @@
-package UdemySwingCourse;
+package UdemySwingCourse.guiview;
 
 public class App {
     public static void main(String[] args){

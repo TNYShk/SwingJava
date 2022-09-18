@@ -1,4 +1,4 @@
-package UdemySwingCourse;
+package UdemySwingCourse.guiview;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,6 +36,8 @@ public class Toolbar extends JPanel implements ActionListener {
     }
 
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(textListener != null){
@@ -47,6 +49,7 @@ public class Toolbar extends JPanel implements ActionListener {
             }
             if(e.getSource() == cleanButton){
                 eraser.cleanText();
+
             }
         }
     }
