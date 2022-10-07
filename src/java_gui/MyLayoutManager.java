@@ -72,7 +72,7 @@ public class MyLayoutManager {
 
         MyFrame frameBorder = new MyFrame(710,710,"BorderLayout Lesson");
         frameBorder.setLayout(new BorderLayout(10,10)); //hgap, vgap- sdd margins between panels
-        BufferedImage myPicture = ImageIO.read(new File(currentRelativePath.toAbsolutePath().toString().concat("/src/054.png")));
+        BufferedImage myPicture = ImageIO.read(new File(currentRelativePath.toAbsolutePath().toString().concat("/image/054.png")));
         JLabel picLabel = new JLabel(new ImageIcon(myPicture));
 
         JPanel panel1 = new JPanel();

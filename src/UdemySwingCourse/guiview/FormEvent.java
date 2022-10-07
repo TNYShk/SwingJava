@@ -7,6 +7,7 @@ public class FormEvent extends EventObject {
     private String occupation;
     private int ageCategory;
     private String race;
+
     /**
      * Constructs a prototypical Event.
      *

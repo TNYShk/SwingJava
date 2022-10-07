@@ -16,16 +16,16 @@ public class MyJLabel {
         Path currentRelativePath = Paths.get("");
 
         JLabel label = new JLabel(); // create a label
-        ImageIcon image = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/imageJL.jpeg")); // create an image or icon
-        ImageIcon logo = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/fractal_logo.png")); // create an image or icon
+        ImageIcon image = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/image/imageJL.jpeg")); // create an image or icon
+        ImageIcon logo = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/image/fractal_logo.png")); // create an image or icon
 
         Border border = BorderFactory.createLineBorder(Color.WHITE,10); // create a border, set color and thickness
         /*
         //another way to import image
-        BufferedImage img = ImageIO.read(new File(currentRelativePath.toAbsolutePath().toString().concat("/src/fractal_logo.png")));
+        BufferedImage img = ImageIO.read(new File(currentRelativePath.toAbsolutePath().toString().concat("/image/fractal_logo.png")));
         ImageIcon another = new ImageIcon(img);*/
 
-        //label.setIcon(new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/imageJL.jpeg")));
+        //label.setIcon(new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/image/imageJL.jpeg")));
 
         label.setText("Learning about JLabel"); // set text of label
 

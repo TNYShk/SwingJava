@@ -25,9 +25,9 @@ public class GamePanel extends JPanel implements ActionListener {
     private boolean pauseIt = false;
     private Timer timer;
     private Random random;
-    private JButton startOver;
-
+    private final JButton startOver;
     private ImageIcon exitIcon;
+
     public GamePanel(){
         random = new Random();
         startOver = new JButton("Start Over");
@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements ActionListener {
         this.setBackground(Color.black);
 
         Path currentRelativePath = Paths.get("");
-        String path = currentRelativePath.toAbsolutePath().toString().concat("/src/054.png");
+        String path = currentRelativePath.toAbsolutePath().toString().concat("/image/054.png");
         exitIcon = new ImageIcon(path);
         System.out.println(path);
         this.add(startOver);
@@ -99,10 +99,10 @@ public class GamePanel extends JPanel implements ActionListener {
             y[i] = y[i-1];
         }
         switch (direction) {
-            case 'U' -> y[0] = y[0] - UNIT_SIZE;
-            case 'D' -> y[0] = y[0] + UNIT_SIZE;
-            case 'L' -> x[0] = x[0] - UNIT_SIZE;
-            case 'R' -> x[0] = x[0] + UNIT_SIZE;
+            case ('U') : y[0] = y[0] - UNIT_SIZE;
+            case ('D') : y[0] = y[0] + UNIT_SIZE;
+            case ('L') : x[0] = x[0] - UNIT_SIZE;
+            case ('R') : x[0] = x[0] + UNIT_SIZE;
         }
     }
 
@@ -119,17 +119,18 @@ public class GamePanel extends JPanel implements ActionListener {
         for(int i = bodyParts; i>0; --i){
             if ((x[0] == x[i]) && (y[0] == y[i])) {
                 isRunning = false;
-                break;
+                timer.stop();
             }
         }
         //checks is head touches borders
-        if((x[0]< 0) || (x[0] > SCREEN_WIDTH) || (y[0]< 0)|| (y[0]> SCREEN_HEIGHT))
+        if((x[0]< 0) || (x[0] > SCREEN_WIDTH) || (y[0]< 0)|| (y[0]> SCREEN_HEIGHT)) {
             isRunning = false;
-
-        if(!isRunning) {
             timer.stop();
-
         }
+
+      /*  if(!isRunning) {
+            timer.stop();
+        }*/
     }
 
     public void gameOver(Graphics g){

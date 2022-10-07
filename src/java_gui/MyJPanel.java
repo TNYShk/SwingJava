@@ -14,7 +14,7 @@ public class MyJPanel {
 
     public static void main(String[] args){
         Path currentRelativePath = Paths.get("");
-        ImageIcon icon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/054.png"));
+        ImageIcon icon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/image/054.png"));
 
         JLabel label = new JLabel();
         label.setText("Psyduck");

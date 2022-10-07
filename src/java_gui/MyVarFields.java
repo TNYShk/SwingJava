@@ -29,8 +29,8 @@ public class MyVarFields implements ActionListener {
     public MyVarFields(){
         Path currentRelativePath = Paths.get("");
 
-        ImageIcon icon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/psyduck.png"));
-        ImageIcon icon1 = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/jigglypuff.png"));
+        ImageIcon icon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/image/psyduck.png"));
+        ImageIcon icon1 = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/image/jigglypuff.png"));
         frame = new MyFrame(420,420,"TextField lesson");
         frame.setLayout(new FlowLayout());
 
@@ -53,8 +53,8 @@ public class MyVarFields implements ActionListener {
 
       /*
       //setting icons instead of regular checkbox
-        ImageIcon veIcon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/green.png")); // create an image or icon
-        ImageIcon xIcon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/redx.png")); // create an image or icon
+        ImageIcon veIcon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/image/green.png")); // create an image or icon
+        ImageIcon xIcon = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/image/redx.png")); // create an image or icon
         checkBox.setIcon(xIcon); //unchecked
         checkBox.setSelectedIcon(veIcon); //checked
         */
@@ -94,10 +94,10 @@ public class MyVarFields implements ActionListener {
         frame.add(checkBox);
         frame.add(button);
 
-        //frame.setVisible(true);
+        frame.setVisible(true);
 
 
-        frame.pack();
+        //frame.pack();
 
     }
 

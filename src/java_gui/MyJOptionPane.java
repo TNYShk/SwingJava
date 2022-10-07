@@ -9,7 +9,7 @@ public class MyJOptionPane {
     some of the following dialog icons appear on a Mac
  */
     public static void main(String[] args){
-        ImageIcon iconTest = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/src/fractal.png"); // create an image or icon
+        ImageIcon iconTest = new ImageIcon("/Users/tanyashkolnik/IdeaProjects/SwingJava/image/fractal.png"); // create an image or icon
 //message dialog: plain, information,question,warning,error
         JOptionPane.showMessageDialog(null,"This appears in msg dialog","msg dialog title",JOptionPane.PLAIN_MESSAGE);
         JOptionPane.showMessageDialog(null,"This appears in info msg \n it has an icon","msg dialog title",JOptionPane.INFORMATION_MESSAGE);

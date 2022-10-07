@@ -19,6 +19,10 @@ public class Person {
         this.ID = ++counter;
     }
 
+    public String toString(){
+        return (" "+ ID+ " "+ getName()+" "+getOccupation()+" "+getRace()+" "+ageCategory.name());
+    }
+
     public String getName() {
         return name;
     }
@@ -49,5 +53,9 @@ public class Person {
 
     public void setRace(Race race) {
         this.race = race;
+    }
+
+    public int getID(){
+        return ID;
     }
 }

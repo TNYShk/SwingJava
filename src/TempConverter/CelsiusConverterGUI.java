@@ -1,6 +1,6 @@
 package TempConverter;
 
-import Calculator.SimpleCalc;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

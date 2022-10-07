@@ -19,7 +19,7 @@ public class MyComboBox {
         System.out.println(comboBox.getItemCount()); //returns amount of items in it
         //comboBox.removeItem("horse"); //remove item by name
         //comboBox.removeItemAt(0); //remove item at index
-        comboBox.removeAll();// remove all items in the combox
+        //comboBox.removeAll();// remove all items in the combox
         System.out.println(comboBox.getItemCount()); //returns amount of items in it
         comboBox.setSelectedIndex(0); // default selection can be set to index
         frame.setLayout(new FlowLayout());

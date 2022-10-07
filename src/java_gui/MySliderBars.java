@@ -96,7 +96,7 @@ public void fill() throws InterruptedException {
 
 
     public static void main(String[] args) throws InterruptedException {
-        new SliderDemo();
+        //new SliderDemo();
         new MySliderBars();
 
 

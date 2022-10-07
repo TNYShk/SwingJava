@@ -14,8 +14,8 @@ public class MyJButton {
     public MyJButton() {
         Path currentRelativePath = Paths.get("");
 
-        ImageIcon buttonImg = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/classical_apple.png"));
-        ImageIcon labelImg = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/src/psyduck.png"));
+        ImageIcon buttonImg = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/image/classical_apple.png"));
+        ImageIcon labelImg = new ImageIcon(currentRelativePath.toAbsolutePath().toString().concat("/image/psyduck.png"));
         button = new JButton();
         label = new JLabel();
         label.setIcon(labelImg);

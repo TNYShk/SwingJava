@@ -3,6 +3,7 @@ package UdemySwingCourse.guiview;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class FormPanel extends JPanel implements TextEraser{
     private JLabel nameLabel;
@@ -41,9 +42,13 @@ public class FormPanel extends JPanel implements TextEraser{
         fpd.width = 210;
         setPreferredSize(fpd);
         nameLabel = new JLabel("Name: ");
-        anotherLabel = new JLabel("Title: ");
+        anotherLabel = new JLabel("Work: ");
         nameField = new JTextField(10);
         anotherField = new JTextField(10);
+        confirmButton = new JButton("OK");
+
+        confirmButton.setMnemonic(KeyEvent.VK_O);
+
         ageList = new JList<>();
         DefaultListModel<String> ageModel = new DefaultListModel<>();
         for(ageCat a: ageCat.values()){
@@ -71,24 +76,20 @@ public class FormPanel extends JPanel implements TextEraser{
 
 
 
-
-        confirmButton = new JButton("OK");
-
         confirmButton.addActionListener(e -> {
             String name = nameField.getText();
             String job  = anotherField.getText();
             int ageCat = ageList.getSelectedIndex();
-            System.out.println(ageList.getModel().getElementAt(ageCat));
+            //System.out.println(ageList.getModel().getElementAt(ageCat));
 
             String race = group.getSelection().getActionCommand();
-            System.out.println(race);
+            //System.out.println(race);
             FormEvent ev = new FormEvent(this,name,job,ageCat,race);
 
 
             if(formListener != null){
                 formListener.formEventOccured(ev);
-                cleanText();
-                races[races.length-1].setSelected(true);
+                //races[races.length-1].setSelected(true);
             }
         });
 
@@ -189,6 +190,9 @@ public class FormPanel extends JPanel implements TextEraser{
         nameField.replaceSelection("");
         anotherField.selectAll();
         anotherField.replaceSelection("");
+        races[races.length-1].setSelected(true);
+        ageList.setSelectedIndex(1);
+
     }
 
     public void setFormListener(FormListener e){
