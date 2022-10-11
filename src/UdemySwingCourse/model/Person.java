@@ -1,8 +1,9 @@
 package UdemySwingCourse.model;
 
 
+import java.io.Serializable;
 
-public class Person {
+public class Person implements Serializable {
     private static int counter = 0;
     private final int ID;
     private String name;

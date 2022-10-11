@@ -17,16 +17,17 @@ public class Toolbar extends JPanel implements ActionListener {
         setBorder(BorderFactory.createEtchedBorder());
         helloButton = new JButton("Hello");
         byeButton = new JButton("Bye");
-        cleanButton = new JButton("clean");
+        cleanButton = new JButton("Clean");
 
         helloButton.addActionListener(this);
         byeButton.addActionListener(this);
         cleanButton.addActionListener(this);
         setLayout(new FlowLayout(FlowLayout.LEADING));
 
+        add(cleanButton);
         add(helloButton);
         add(byeButton);
-        add(cleanButton);
+
     }
     public void setStringListener(StringListener listener){
         this.textListener = listener;

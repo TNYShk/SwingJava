@@ -1,15 +1,15 @@
 package UdemySwingCourse.guiview;
 
 import UdemySwingCourse.controller.Controller;
+import java_gui.Main;
 
 
 import javax.swing.*;
 
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
+import java.io.IOException;
 
 
 public class MainFrame extends JFrame {
@@ -31,7 +31,7 @@ public class MainFrame extends JFrame {
         tablePanel = new TablePanel();
         controller = new Controller();
         fileChooser = new JFileChooser();
-        //adding desirable filters for file extenssions
+        //adding desirable filters for file extensions in file loader
         fileChooser.addChoosableFileFilter(new PersonFileFilter());
 
         setJMenuBar(createMenuBar());
@@ -65,10 +65,21 @@ public class MainFrame extends JFrame {
         add(tablePanel,BorderLayout.CENTER);
 
 
-
-        setSize(600,420);
+        setMinimumSize(new Dimension(600,420));
+        setSize(600,500);
         this.setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                int result = JOptionPane.showConfirmDialog(MainFrame.this,
+                        "Exit Now?", "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION);
+                if (result == JOptionPane.YES_OPTION)
+                    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                else if (result == JOptionPane.NO_OPTION)
+                   setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            }
+        });
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
@@ -76,26 +87,54 @@ public class MainFrame extends JFrame {
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
 
+        fileMenu.setMnemonic(KeyEvent.VK_F); // alt+ f to load
+
         JMenuItem loadFile = new JMenuItem("Import",KeyEvent.VK_I);
         JMenuItem saveFile = new JMenuItem("Export",KeyEvent.VK_E);
         JMenuItem exit = new JMenuItem("Exit",KeyEvent.VK_X);
-        exit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X,ActionEvent.CTRL_MASK));
+
+        exit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_MASK));
+        loadFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,KeyEvent.CTRL_MASK));
+
         loadFile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (fileChooser.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION){
-
-                    System.out.println(fileChooser.getSelectedFile());
+                    try {
+                        controller.loadFromFile(fileChooser.getSelectedFile());
+                        tablePanel.refresh(); //otherwise panel wont recognize new data
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(MainFrame.this,"Failed to load data from file", "Error", JOptionPane.ERROR_MESSAGE);
+                        ex.printStackTrace();
+                    }
+                    //System.out.println(fileChooser.getSelectedFile());
                 }
             }
         });
         saveFile.addActionListener(e -> {
             if (fileChooser.showSaveDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION){
-                System.out.println(fileChooser.getSelectedFile());
+                //System.out.println(fileChooser.getSelectedFile());
+                try {
+                    controller.saveToFile(fileChooser.getSelectedFile());
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(MainFrame.this,"Failed to save data to file", "Error", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace();
+                }
             }
         });
-        fileMenu.setMnemonic(KeyEvent.VK_F); // alt+ f to load
-        exit.addActionListener(e -> System.exit(0));
+
+        exit.addActionListener(new ActionListener() {
+               @Override
+               public void actionPerformed(ActionEvent e) {
+                  int selection = JOptionPane.showConfirmDialog(MainFrame.this, "Are You Sure??", "Confirm Exit", JOptionPane.OK_CANCEL_OPTION);
+
+                  if(selection == JOptionPane.OK_OPTION)
+                        System.exit(0);
+               }
+        });
+
+
+
 
 
         fileMenu.add(saveFile);
