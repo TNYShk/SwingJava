@@ -30,7 +30,9 @@ public class Controller {
         Race raceR = Race.valueOf(race);
         //System.out.println(ag+ " "+ raceR);
 
-       Person person = new Person(name, job, ag , raceR);
+        Person person = (getPeople()!= null) ? new Person(name, job, ag , raceR, getPeople().size()) : new Person(name, job, ag , raceR);
+
+       //Person person = new Person(name, job, ag , raceR);
         db.addPerson(person);
 
        // System.out.println(person);
@@ -41,5 +43,9 @@ public class Controller {
 
     public void loadFromFile(File file) throws IOException{
         db.loadFromFile(file);
+    }
+
+    public void removePerson(int index){
+        db.removeRow(index);
     }
 }

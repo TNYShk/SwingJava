@@ -1,7 +1,6 @@
 package UdemySwingCourse.guiview;
 
 import UdemySwingCourse.controller.Controller;
-import java_gui.Main;
 
 
 import javax.swing.*;
@@ -10,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.util.prefs.Preferences;
 
 
 public class MainFrame extends JFrame {
@@ -19,9 +19,10 @@ public class MainFrame extends JFrame {
    private Controller controller;
    private TablePanel tablePanel;
    private JFileChooser fileChooser;
+    private PrefsDialog prefsDialog;
+    private Preferences prefs;//storing small things onto OS memory, like user,pass. remains between runs of the app
 
-
-    public MainFrame(){
+    public MainFrame()  {
         super("UdemySwing");
 
         setLayout(new BorderLayout());
@@ -29,13 +30,41 @@ public class MainFrame extends JFrame {
         toolbar = new Toolbar();
         textPanel = new TextPanel();
         tablePanel = new TablePanel();
+        prefsDialog = new PrefsDialog(this);
+
+        prefs = Preferences.userRoot().node("ts");
         controller = new Controller();
+        tablePanel.setData(controller.getPeople());
+
+        tablePanel.setPersonTableListener(new PersonTableListener(){
+            @Override
+            public void rowDeleted(int row) {
+                System.out.println("MainFrame->rowDeleted "+row);
+                controller.removePerson(row);
+            }
+        });
+
+        prefsDialog.setPrefsListener(new PrefsListener() {
+            @Override
+            public void preferencesSet(String user, String password, int port) {
+                System.out.println(user+" "+password+" "+ port);
+                prefs.put("user", user);
+                prefs.put("password", password);
+                prefs.putInt("port", port);
+            }
+        });
+        String user = prefs.get("user","");
+        String password = prefs.get("password","");
+        int port = prefs.getInt("port",3306);
+
+        prefsDialog.setDefaults(user,password,port);
+
         fileChooser = new JFileChooser();
         //adding desirable filters for file extensions in file loader
         fileChooser.addChoosableFileFilter(new PersonFileFilter());
 
         setJMenuBar(createMenuBar());
-        tablePanel.setData(controller.getPeople());
+
         toolbar.setStringListener(new StringListener() {
             @Override
             public void textEmitted(String text) {
@@ -86,8 +115,13 @@ public class MainFrame extends JFrame {
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
-
         fileMenu.setMnemonic(KeyEvent.VK_F); // alt+ f to load
+        JMenu winMenu = new JMenu("Window");
+        JMenu showMenu = new JMenu("Show");
+        JMenuItem prefWinItem = new JMenuItem("Preferences...");
+
+        showMenu.add(prefWinItem);
+        winMenu.add(showMenu);
 
         JMenuItem loadFile = new JMenuItem("Import",KeyEvent.VK_I);
         JMenuItem saveFile = new JMenuItem("Export",KeyEvent.VK_E);
@@ -133,6 +167,13 @@ public class MainFrame extends JFrame {
                }
         });
 
+        prefWinItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                prefsDialog.setVisible(true);
+            }
+        });
+
 
 
 
@@ -143,6 +184,7 @@ public class MainFrame extends JFrame {
         fileMenu.add(exit);
 
         menuBar.add(fileMenu);
+        menuBar.add(winMenu);
 
         return menuBar;
 

@@ -4,7 +4,8 @@ package UdemySwingCourse.model;
 import java.io.Serializable;
 
 public class Person implements Serializable {
-    private static int counter = 0;
+    private static final long serialVersionUID = 10l;
+    private static int counter = 1 ;
     private final int ID;
     private String name;
     private String occupation;
@@ -18,6 +19,14 @@ public class Person implements Serializable {
         this.ageCategory = ageCategory;
         this.race = race;
         this.ID = ++counter;
+    }
+    public Person(String name, String occupation, AgeCategory ageCategory, Race race, int count) {
+        this.name = name;
+        this.occupation = occupation;
+        this.ageCategory = ageCategory;
+        this.race = race;
+        this.ID = ++count;
+        ++counter;
     }
 
     public String toString(){

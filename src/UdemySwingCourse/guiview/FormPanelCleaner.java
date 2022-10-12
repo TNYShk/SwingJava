@@ -1,5 +1,7 @@
 package UdemySwingCourse.guiview;
 
-public interface TextEraser {
+public interface FormPanelCleaner {
     void cleanText();
+
+
 }

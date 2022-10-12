@@ -11,7 +11,7 @@ public class Toolbar extends JPanel implements ActionListener {
     private JButton byeButton;
     private JButton cleanButton;
     private StringListener textListener;
-    private TextEraser eraser;
+    private FormPanelCleaner eraser;
 
     public Toolbar(){
         setBorder(BorderFactory.createEtchedBorder());
@@ -32,7 +32,7 @@ public class Toolbar extends JPanel implements ActionListener {
     public void setStringListener(StringListener listener){
         this.textListener = listener;
     }
-    public void setTextEraser(TextEraser listen){
+    public void setTextEraser(FormPanelCleaner listen){
         this.eraser = listen;
     }
 

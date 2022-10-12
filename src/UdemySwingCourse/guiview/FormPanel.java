@@ -5,7 +5,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class FormPanel extends JPanel implements TextEraser{
+public class FormPanel extends JPanel implements FormPanelCleaner {
     private JLabel nameLabel;
     private JLabel anotherLabel;
     private JTextField nameField;
@@ -194,6 +194,8 @@ public class FormPanel extends JPanel implements TextEraser{
         ageList.setSelectedIndex(1);
 
     }
+
+
 
     public void setFormListener(FormListener e){
         formListener = e;}
