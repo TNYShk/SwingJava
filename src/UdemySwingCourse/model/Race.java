@@ -4,5 +4,7 @@ public enum Race {
     DROID,
     ELF,
     DWARF,
+    WITCHER,
     HUMAN
+
 }

@@ -15,7 +15,7 @@ public class FormPanel extends JPanel implements FormPanelCleaner {
     private JList<String> ageList;
 
     private ButtonGroup group;
-    private JRadioButton[] races = {new JRadioButton("Droid"),new JRadioButton("Elf"),new JRadioButton("Dwarf"),new JRadioButton("Human")};
+    private JRadioButton[] races = {new JRadioButton("Droid"),new JRadioButton("Elf"),new JRadioButton("Dwarf"),new JRadioButton("Witcher"),new JRadioButton("Human")};
 
 
 
@@ -38,7 +38,7 @@ public class FormPanel extends JPanel implements FormPanelCleaner {
 //View component (MVC)
     public FormPanel(){
         Dimension fpd = getPreferredSize();
-        System.out.println(fpd);
+        //System.out.println(fpd);
         fpd.width = 210;
         setPreferredSize(fpd);
         nameLabel = new JLabel("Name: ");
@@ -65,7 +65,9 @@ public class FormPanel extends JPanel implements FormPanelCleaner {
         races[0].setActionCommand("Droid");
         races[1].setActionCommand("Elf");
         races[2].setActionCommand("Dwarf");
-        races[3].setActionCommand("Human");
+        races[3].setActionCommand("Witcher");
+        races[4].setActionCommand("Human");
+
 
         group = new ButtonGroup();
 

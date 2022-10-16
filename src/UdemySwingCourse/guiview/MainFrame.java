@@ -15,12 +15,12 @@ import java.util.prefs.Preferences;
 public class MainFrame extends JFrame {
     private TextPanel textPanel;
     private Toolbar toolbar;
-   private FormPanel formPanel;
-   private Controller controller;
-   private TablePanel tablePanel;
-   private JFileChooser fileChooser;
+    private FormPanel formPanel;
+    private Controller controller;
+    private TablePanel tablePanel;
+    private JFileChooser fileChooser;
     private PrefsDialog prefsDialog;
-    private Preferences prefs;//storing small things onto OS memory, like user,pass. remains between runs of the app
+    private final Preferences prefs;//storing small things onto OS memory, like user,pass. remains between runs of the app
 
     public MainFrame()  {
         super("UdemySwing");
@@ -31,9 +31,9 @@ public class MainFrame extends JFrame {
         textPanel = new TextPanel();
         tablePanel = new TablePanel();
         prefsDialog = new PrefsDialog(this);
-
         prefs = Preferences.userRoot().node("ts");
         controller = new Controller();
+
         tablePanel.setData(controller.getPeople());
 
         tablePanel.setPersonTableListener(new PersonTableListener(){
@@ -43,6 +43,7 @@ public class MainFrame extends JFrame {
                 controller.removePerson(row);
             }
         });
+
 
         prefsDialog.setPrefsListener(new PrefsListener() {
             @Override
@@ -58,6 +59,7 @@ public class MainFrame extends JFrame {
         int port = prefs.getInt("port",3306);
 
         prefsDialog.setDefaults(user,password,port);
+
 
         fileChooser = new JFileChooser();
         //adding desirable filters for file extensions in file loader
@@ -115,8 +117,9 @@ public class MainFrame extends JFrame {
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
-        fileMenu.setMnemonic(KeyEvent.VK_F); // alt+ f to load
+        fileMenu.setMnemonic(KeyEvent.VK_F); // alt+ f to file menue
         JMenu winMenu = new JMenu("Window");
+        winMenu.setMnemonic(KeyEvent.VK_W); // alt+ w to window menu
         JMenu showMenu = new JMenu("Show");
         JMenuItem prefWinItem = new JMenuItem("Preferences...");
 
@@ -127,8 +130,10 @@ public class MainFrame extends JFrame {
         JMenuItem saveFile = new JMenuItem("Export",KeyEvent.VK_E);
         JMenuItem exit = new JMenuItem("Exit",KeyEvent.VK_X);
 
+        prefWinItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_MASK));
         exit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_MASK));
         loadFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,KeyEvent.CTRL_MASK));
+        saveFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,KeyEvent.CTRL_MASK));
 
         loadFile.addActionListener(new ActionListener() {
             @Override

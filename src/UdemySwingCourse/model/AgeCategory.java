@@ -1,6 +1,6 @@
 package UdemySwingCourse.model;
 
 public enum AgeCategory {
-    CHILD,ADULT,OLD;
+    CHILD,ADULT,OLD
 
 }

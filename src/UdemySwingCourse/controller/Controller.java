@@ -8,6 +8,7 @@ import UdemySwingCourse.model.Race;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Controller {
@@ -46,6 +47,6 @@ public class Controller {
     }
 
     public void removePerson(int index){
-        db.removeRow(index);
+         db.removeRow(index);
     }
 }

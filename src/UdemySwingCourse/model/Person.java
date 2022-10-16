@@ -18,7 +18,7 @@ public class Person implements Serializable {
         this.occupation = occupation;
         this.ageCategory = ageCategory;
         this.race = race;
-        this.ID = ++counter;
+        this.ID = counter++;
     }
     public Person(String name, String occupation, AgeCategory ageCategory, Race race, int count) {
         this.name = name;
@@ -26,7 +26,7 @@ public class Person implements Serializable {
         this.ageCategory = ageCategory;
         this.race = race;
         this.ID = ++count;
-        ++counter;
+       counter = count;
     }
 
     public String toString(){
