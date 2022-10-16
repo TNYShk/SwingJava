@@ -18,7 +18,6 @@ public class TestDatabase {
             e.printStackTrace();
         }
         db.addPerson(new Person("Solomun","DJ", AgeCategory.ADULT, Race.HUMAN));
-        db.addPerson(new Person("Sue","Lion tamer", AgeCategory.OLD, Race.ELF));
         db.addPerson(new Person("Sue","Artist", AgeCategory.OLD, Race.DROID));
         try {
             db.save();

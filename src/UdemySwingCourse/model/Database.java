@@ -57,7 +57,7 @@ public class Database {
     }
 
     public void connect() throws Exception {
-        if(connection !=null)
+        if(connection != null)
             return;
 
         try {
@@ -144,6 +144,7 @@ public class Database {
         Statement selectstmt = connection.createStatement();
 
         ResultSet results = selectstmt.executeQuery(sql);
+
         while(results.next()){
             int iD = results.getInt("id");
 
@@ -151,12 +152,14 @@ public class Database {
             String occupation = results.getString("job");
             String age = results.getString("age");
             String race = results.getString("race");
-            //Person toAdd = new Person(name)
-            System.out.println("id: "+iD+ " name: "+ name+" is an "+age+ " "+occupation+ " and belongs to "+ race+" race");
+
+            Person toAdd = new Person(name,occupation,AgeCategory.valueOf(age.toUpperCase()),Race.valueOf(race.toUpperCase()),iD);
+            people.add(toAdd);
+            System.out.println(toAdd);
         }
 
+        results.close();
         selectstmt.close();
-
 
     }
 

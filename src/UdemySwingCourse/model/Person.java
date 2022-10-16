@@ -18,19 +18,19 @@ public class Person implements Serializable {
         this.occupation = occupation;
         this.ageCategory = ageCategory;
         this.race = race;
-        this.ID = counter++;
+        this.ID = ++counter;
     }
     public Person(String name, String occupation, AgeCategory ageCategory, Race race, int count) {
         this.name = name;
         this.occupation = occupation;
         this.ageCategory = ageCategory;
         this.race = race;
-        this.ID = ++count;
-       counter = count;
+        this.ID = count++;
+        counter = count;
     }
 
     public String toString(){
-        return (" "+ ID+ " "+ getName()+" "+getOccupation()+" "+getRace()+" "+ageCategory.name());
+        return ("id: "+ID+ " "+ name+" is an "+ageCategory.name().toLowerCase()+ " "+occupation+ " and belongs to "+ race.name().toLowerCase()+" race");
     }
 
     public String getName() {

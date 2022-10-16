@@ -31,7 +31,7 @@ public class Controller {
         Race raceR = Race.valueOf(race);
         //System.out.println(ag+ " "+ raceR);
 
-        Person person = (getPeople()!= null) ? new Person(name, job, ag , raceR, getPeople().size()) : new Person(name, job, ag , raceR);
+        Person person = (getPeople()!= null) ? new Person(name, job, ag , raceR, getPeople().size()+1) : new Person(name, job, ag , raceR);
 
        //Person person = new Person(name, job, ag , raceR);
         db.addPerson(person);
@@ -41,9 +41,23 @@ public class Controller {
     public void saveToFile(File file) throws IOException {
         db.saveToFile(file);
     }
+    public void connect() throws Exception {
+        db.connect();
+    }
+    public void saveSQL() throws SQLException {
+        db.save();
+    }
+
+    public void close(){
+        db.disconnect();
+    }
 
     public void loadFromFile(File file) throws IOException{
         db.loadFromFile(file);
+    }
+
+    public void loadSQL() throws SQLException {
+        db.load();
     }
 
     public void removePerson(int index){

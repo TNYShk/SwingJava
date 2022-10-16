@@ -1,6 +1,7 @@
 package UdemySwingCourse.guiview;
 
 import UdemySwingCourse.controller.Controller;
+import jdk.nashorn.internal.scripts.JO;
 
 
 import javax.swing.*;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.prefs.Preferences;
 
 
@@ -67,14 +69,39 @@ public class MainFrame extends JFrame {
 
         setJMenuBar(createMenuBar());
 
-        toolbar.setStringListener(new StringListener() {
+        toolbar.setToolbarListener(new ToolbarListener() {
             @Override
-            public void textEmitted(String text) {
-                textPanel.appendText(text);
+            public void saveEventHappened() {
+                try {
+                    controller.connect();
+                    controller.saveSQL();
+                } catch (Exception e) {
+                    String msg = "connect";
+                    if (e.getCause().equals("SQLException"))
+                        msg = "save to";
+                    JOptionPane.showMessageDialog(MainFrame.this,"Cannot Connect "+msg+ " database","Exception",JOptionPane.ERROR_MESSAGE);
+                }
+
             }
+
+            @Override
+            public void refreshEventHappened() {
+                try {
+                    controller.connect();
+                    controller.loadSQL();
+                } catch (Exception e) {
+                    String msg = "connect";
+                    if (e.getCause().equals("SQLException"))
+                        msg = "load from";
+                    JOptionPane.showMessageDialog(MainFrame.this,"Cannot Connect "+msg+ " database","Exception",JOptionPane.ERROR_MESSAGE);
+                }
+                tablePanel.refresh();
+            }
+
         });
 
         toolbar.setTextEraser(() -> formPanel.cleanText());
+
 
         formPanel.setFormListener(new FormListener(){
             public void formEventOccured(FormEvent e){
